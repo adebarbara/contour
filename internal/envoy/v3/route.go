@@ -107,6 +107,12 @@ func RouteRoute(r *dag.Route) *envoy_route_v3.Route_Route {
 				UpgradeType: "websocket",
 			},
 		)
+
+		ra.UpgradeConfigs = append(ra.UpgradeConfigs,
+			&envoy_route_v3.RouteAction_UpgradeConfig{
+				UpgradeType: "websocket",
+			},
+		)
 	}
 
 	if envoy.SingleSimpleCluster(r.Clusters) {
